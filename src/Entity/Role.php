@@ -26,12 +26,7 @@ class Role
     private $libellet;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Role", inversedBy="users")
-     */
-    private $role;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Role", mappedBy="role")
+     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="role")
      */
     private $users;
 
@@ -57,27 +52,15 @@ class Role
         return $this;
     }
 
-    public function getRole(): ?self
-    {
-        return $this->role;
-    }
-
-    public function setRole(?self $role): self
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
     /**
-     * @return Collection|self[]
+     * @return Collection|User[]
      */
     public function getUsers(): Collection
     {
         return $this->users;
     }
 
-    public function addUser(self $user): self
+    public function addUser(User $user): self
     {
         if (!$this->users->contains($user)) {
             $this->users[] = $user;
@@ -87,7 +70,7 @@ class Role
         return $this;
     }
 
-    public function removeUser(self $user): self
+    public function removeUser(User $user): self
     {
         if ($this->users->contains($user)) {
             $this->users->removeElement($user);
