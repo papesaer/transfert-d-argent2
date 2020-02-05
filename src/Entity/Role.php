@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\OneToMany;
+use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ApiResource()
@@ -40,12 +41,12 @@ class Role
         return $this->id;
     }
 
-    public function getLibellet(): ?string
+    public function getLibelle(): ?string
     {
         return $this->libellet;
     }
 
-    public function setLibellet(string $libellet): self
+    public function setLibelle(string $libellet): self
     {
         $this->libellet = $libellet;
 
